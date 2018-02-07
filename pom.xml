@@ -1,0 +1,68 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.qhcs.maven.group5</groupId>
+	<artifactId>movie</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>movie</name>
+	<url>http://maven.apache.org</url>
+
+	<modules>
+		<!-- common工程，一般提供工具类、通用的类、接口 -->
+		<module>../movie-common</module>
+		<!-- service工程，一般做逻辑处理 -->
+		<module>../movie-service</module>
+		<!-- portal工程，一般处理来自门户网站请求、响应 -->
+		<module>../movie-portal</module>
+		<!-- console工程，一般处理来自管理后台请求、响应 -->
+		<module>../movie-console</module>
+	</modules>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<junit.version>3.8.1</junit.version>
+		<servlet.version>3.1.0</servlet.version>
+		<jstl.version>1.2</jstl.version>
+		<standard.version>1.1.2</standard.version>
+	</properties>
+
+	<!-- 依赖管理，表示由父工程提供依赖，子类如果需要引入依赖不需要指定依赖版本version和作用域scope， 如果子类不需要父类的依赖则不会引入依赖 -->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<!-- servlet -->
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+				<version>${servlet.version}</version>
+				<!-- provided表示开发阶段由maven提供jar包，部署的时候不会把jar加入到部署文件里面，运行的时候由容器提供 -->
+				<scope>provided</scope>
+			</dependency>
+
+			<!-- jstl -->
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>jstl</artifactId>
+				<version>${jstl.version}</version>
+			</dependency>
+
+			<!-- standard -->
+			<dependency>
+				<groupId>taglibs</groupId>
+				<artifactId>standard</artifactId>
+				<version>${standard.version}</version>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
+</project>
